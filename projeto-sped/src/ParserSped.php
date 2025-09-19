@@ -47,5 +47,22 @@ class ParserSped {
             "erros" => $erros
         ];
     }
+    public function buscarBloco($codigo) {
+    $handle = fopen($this->filepath, "r");
+    $linhas = [];
+
+    if ($handle) {
+        while (($line = fgets($handle)) !== false) {
+            $fields = explode("|", trim($line));
+            if (($fields[1] ?? null) === $codigo) {
+                $linhas[] = $line;
+            }
+        }
+        fclose($handle);
+    }
+
+    return $linhas;
+}
+
 }
 ?>
