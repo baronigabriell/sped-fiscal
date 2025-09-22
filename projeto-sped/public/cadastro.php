@@ -96,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <label for="senha">Crie uma senha</label>
     <br>
     <div class="senha-container">
-        <input type="password" name="senha" id="senha" required>
+        <input type="password" name="senha" id="senha" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])(?:([0-9a-zA-Z$*&@#])(?!\1)){8,}$" title="A senha deve ter pelo menos 8 caracteres, incluindo uma letra maiúscula, uma minúscula, um número e um caractere especial ($*&@#). Não pode ter caracteres repetidos seguidos.">
         <button type="button" class="toggle-senha" onclick="toggleSenha('senha', 'olho1a', 'olho1f')">
             <svg id="olho1a" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
@@ -127,14 +127,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </p>
 </form>
 <style>
+    #olho1f, #olho2f{
+        display: none;
+    }
+
     .senha-container {
         position: relative;
     }
 
     .toggle-senha {
         position: absolute;
-        right: 10px;
-        top: 50%;
+        right: 20px;
+        top: 30%;
         transform: translateY(-50%);
         background: none;
         border: none;
@@ -177,13 +181,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         padding-left: 15px;
         font-family: poppins;
         font-size: 13px;
+        margin-bottom: 15px;
     }
+
 
     label {
         font-size: 13px;
     }
 
-    button {
+    button:not(.toggle-senha) {
         width: 100%;
         height: 45px;
         border-radius: 999px;
@@ -195,13 +201,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         background-color: #94b9ff;
     }
 
-    button:hover {
+    button:not(.toggle-senha):hover {
         background-color: #cdffd8;
         transition: all 0.2s ease-in-out;
         cursor: pointer;
     }
 
-    button:not(:hover) {
+    button:not(.toggle-senha):not(:hover) {
         background-color: #94b9ff;
         transition: all 0.2s ease-in-out;
     }

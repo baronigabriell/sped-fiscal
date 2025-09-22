@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        
         body {
             background-image: url('../public/backg.png');
             background-repeat: no-repeat;
@@ -13,7 +14,8 @@
             justify-content: center;
             display: flex;
             align-items: center;
-            height: 90vh;
+            height: 97vh;
+            font-family: poppins, Segoe UI;
         }
 
         button {
