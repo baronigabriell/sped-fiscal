@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 19-Set-2025 às 20:07
+-- Tempo de geração: 26-Set-2025 às 20:13
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
@@ -26,19 +26,32 @@ USE `sped_fiscal`;
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `produtos`
+--
+
+DROP TABLE IF EXISTS `produtos`;
+CREATE TABLE IF NOT EXISTS `produtos` (
+  `nome` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `preco` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `categoria` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `usuarios`
 --
 
 DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `nome` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `senha` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nome` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `senha` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `criado_em` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Extraindo dados da tabela `usuarios`
@@ -55,7 +68,8 @@ INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `criado_em`) VALUES
 (8, '', 'gezota@gmail.com', '$2y$10$tPxdo81LfbZp89xmIDSyIO0ttUvDgdgBOexTrLWiMIEnkfSLAORf.', '2025-09-19 13:27:58'),
 (9, 'lelo', 'lelo@gmail.com', '$2y$10$mHfU2kP9w2q1ukH28VLuP.a5Z53VTEclDBBNtDQBKQXRR.2UTXd0S', '2025-09-19 13:34:54'),
 (10, 'henrique', 'henrique@gmail.com', '$2y$10$6v1aDVLUbWq/djvhCAttfuLUH.ZKzq38s8u5ktG9w/PjQV9YxHAlW', '2025-09-19 13:35:15'),
-(11, 'pietro', 'pietro@gmail.com', '$2y$10$mWXiCJTmRTaZBe6hZBn6ReefIiFdW9FmjkQ0trakcPmmf/VIDKrAq', '2025-09-19 19:43:45');
+(11, 'pietro', 'pietro@gmail.com', '$2y$10$mWXiCJTmRTaZBe6hZBn6ReefIiFdW9FmjkQ0trakcPmmf/VIDKrAq', '2025-09-19 19:43:45'),
+(12, 'gabriel', 'gabrielbaroni8@gmail.com', '$2y$10$avcCVMaOYzE85lEwAwXSYuhU2crkgmpYUsL0qXIMPJGKY8ZhfFOHa', '2025-09-26 13:29:27');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
