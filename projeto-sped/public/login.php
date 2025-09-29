@@ -4,8 +4,14 @@ require_once __DIR__ . '/../src/utils/Db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['email']) && isset($_POST['senha']) && !empty($_POST['email']) && !empty($_POST['senha'])) {
-        $email = $_POST['email'];
+        $email = trim($_POST['email']);
         $senha = $_POST['senha'];
+
+        // Validação do email
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo "Por favor, insira um email válido.";
+            exit();
+        }
 
         $pdo = Db::getConnection();
         $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE email = :email");
@@ -13,13 +19,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $usuario = $stmt->fetch();
 
         if ($usuario) {
+            // Verificando a senha
             if (password_verify($senha, $usuario['senha'])) {
-                // 👇 Agora sim, tudo existe e está validado:
+                // 👇 Salva as informações do usuário na sessão
                 $_SESSION['usuario_id'] = $usuario['id'];
                 $_SESSION['usuario'] = $usuario['email'];
-                $_SESSION['nome'] = $usuario['nome']; // ✅ Aqui está certo!
+                $_SESSION['nome'] = $usuario['nome']; // ✅ Nome está correto!
 
-                header("Location: dashboard.php");
+                // Redireciona o usuário para a página anterior ou o dashboard
+                $redirectUrl = isset($_SESSION['redirect_to']) ? $_SESSION['redirect_to'] : 'dashboard.php';
+                header("Location: $redirectUrl");
                 exit();
             } else {
                 echo "Usuário ou senha incorretos!";
@@ -32,8 +41,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
-
 
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
