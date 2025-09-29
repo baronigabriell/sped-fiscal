@@ -67,6 +67,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </button>
     </div>
     <button type="submit">Entrar</button>
+    <p style="font-style: italic; font-size: 13px; text-align: center;">Não tem uma conta? Faça o
+        <a href="cadastro.php">cadastro</a>
+    </p>
 </form>
 <style>
     #olhof{

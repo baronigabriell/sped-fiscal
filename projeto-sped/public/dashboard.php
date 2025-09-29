@@ -11,13 +11,13 @@ $usuario_logado = isset($_SESSION['usuario_id']) && !empty($_SESSION['usuario_id
 
 
 if ($usuario_logado) {
-    $stmt = $pdo->prepare("SELECT nome, foto_perfil FROM usuarios WHERE id = ?");
+    $stmt = $pdo->prepare("SELECT nome, foto FROM usuarios WHERE id = ?");
     $stmt->execute([$_SESSION['usuario_id']]);
     $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($usuario) {
         $usuario_nome = $usuario['nome'];
-        $usuario_foto = $usuario['foto_perfil']; // Caminho para a foto do perfil
+        $usuario_foto = $usuario['foto']; // Caminho para a foto do perfil
     }
 }
 
@@ -278,7 +278,8 @@ $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php if ($usuario_logado): ?>
             <div class="auth-right">
                 <a href="perfil.php" class="user-info">
-                    <img src="<?= htmlspecialchars($usuario_foto ?? 'profile.jpg') ?>" alt="Foto de perfil">
+                <img src="uploads/<?= htmlspecialchars($usuario['foto']) ?>" alt="Foto de perfil">
+
                     <p>Olá, <?= htmlspecialchars($usuario_nome) ?>!</p>
                 </a>
             </div>
