@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 29/09/2025 às 14:17
--- Versão do servidor: 9.1.0
--- Versão do PHP: 8.3.14
+-- Tempo de geração: 03-Out-2025 às 19:49
+-- Versão do servidor: 8.0.31
+-- versão do PHP: 8.0.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -26,7 +26,24 @@ USE `sped_fiscal`;
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `produtos`
+-- Estrutura da tabela `historico_buscas`
+--
+
+DROP TABLE IF EXISTS `historico_buscas`;
+CREATE TABLE IF NOT EXISTS `historico_buscas` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `usuario_id` int NOT NULL,
+  `termo_busca` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `resultados_encontrados` int DEFAULT '0',
+  `data_busca` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `usuario_id` (`usuario_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `produtos`
 --
 
 DROP TABLE IF EXISTS `produtos`;
@@ -39,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `produtos` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `usuarios`
+-- Estrutura da tabela `usuarios`
 --
 
 DROP TABLE IF EXISTS `usuarios`;
@@ -49,16 +66,16 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `email` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `senha` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `criado_em` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `foto_perfil` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `foto` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Despejando dados para a tabela `usuarios`
+-- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `criado_em`, `foto_perfil`) VALUES
+INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `criado_em`, `foto`) VALUES
 (1, '', 'gabriel@gmail.com', '$2y$10$xLQyeQAY1TL9pDYHKKPBB.PJ8g/MHH6I5qg6hdoBfhStjKrX0BnB6', '2025-09-19 11:57:56', NULL),
 (2, '', 'amanda@gmail.com', '$2y$10$uvROOP6KV8p5Ze6gO1sfLOFxe39yPSOrJLtC8k3gswDtJr/WsF1pW', '2025-09-19 12:40:52', NULL),
 (3, '', 'rafael@gmail.com', '$2y$10$.pdP/UTJ.bI/UhrajSw7cernC8p1ozVg/ug8p5FngogXiLyYqfUR2', '2025-09-19 12:42:45', NULL),
@@ -71,7 +88,7 @@ INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `criado_em`, `foto_perfi
 (10, 'henrique', 'henrique@gmail.com', '$2y$10$6v1aDVLUbWq/djvhCAttfuLUH.ZKzq38s8u5ktG9w/PjQV9YxHAlW', '2025-09-19 13:35:15', NULL),
 (11, 'pietro', 'pietro@gmail.com', '$2y$10$mWXiCJTmRTaZBe6hZBn6ReefIiFdW9FmjkQ0trakcPmmf/VIDKrAq', '2025-09-19 19:43:45', NULL),
 (12, 'gabriel', 'gabrielbaroni8@gmail.com', '$2y$10$avcCVMaOYzE85lEwAwXSYuhU2crkgmpYUsL0qXIMPJGKY8ZhfFOHa', '2025-09-26 13:29:27', NULL),
-(13, 'baroni', 'baroni@gmail.com', '$2y$10$NfSYIqMuXzRxh0tfut7lbODRBDrmgHV6mVKd0MmLAQqB3sbYOdW1.', '2025-09-29 10:58:49', NULL);
+(13, 'baroni', 'baronieu@gmail.com', '$2y$10$NfSYIqMuXzRxh0tfut7lbODRBDrmgHV6mVKd0MmLAQqB3sbYOdW1.', '2025-09-29 10:58:49', '68dfbc44910eb.jpeg');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
