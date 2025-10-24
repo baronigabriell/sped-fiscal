@@ -371,7 +371,6 @@ if ($usuario_logado && (!empty($_GET['blocos']) || !empty($categoria) || $regist
                 </a>
             <?php endif; ?>
         </div>
-        <a href="../public/import csv.py">Relatório</a>
         <?php if ($usuario_logado): ?>
             <div class="auth-right">
                 <a href="perfil.php" class="user-info">

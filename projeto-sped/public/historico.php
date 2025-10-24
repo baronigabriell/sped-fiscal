@@ -41,7 +41,7 @@ $total_buscas = $stmt_total->fetch(PDO::FETCH_ASSOC)['total'];
             background-image: url('../public/Design sem nome.png'); /* Mesmo fundo da dashboard, remova se quiser clean */
             background-repeat: no-repeat;
             background-size: cover;
-            min-height: 100vh;
+            min-height: 90vh;
             margin: 0;
             font-family: 'Poppins', sans-serif;
             display: flex;

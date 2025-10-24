@@ -1,7 +1,7 @@
 <?php
 class Db {
     private static $host = 'localhost';  // Endereço do banco de dados
-    private static $dbname = 'cadastro_sped';  // Nome do banco de dados
+    private static $dbname = 'sped fiscal';  // Nome do banco de dados
     private static $username = 'root';  // Usuário do banco
     private static $password = '';  // Senha do banco (vazio para local)
 
