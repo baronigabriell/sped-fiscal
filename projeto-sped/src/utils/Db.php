@@ -1,9 +1,9 @@
 <?php
 class Db {
-    private static $host = 'localhost';  // Endereço do banco de dados
-    private static $dbname = 'cadastro_sped';  // Nome do banco de dados
-    private static $username = 'root';  // Usuário do banco
-    private static $password = '';  // Senha do banco (vazio para local)
+    private static $host = 'localhost';
+    private static $dbname = 'cadastro_sped'; // Nome do banco de usuários (ex: projeto_sped)
+    private static $username = 'root';
+    private static $password = '';
 
     private static $connection;
 
@@ -20,4 +20,3 @@ class Db {
         return self::$connection;
     }
 }
-?>

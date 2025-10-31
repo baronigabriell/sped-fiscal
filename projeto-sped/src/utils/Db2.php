@@ -1,9 +1,11 @@
 <?php
-class Db {
-    private static $host = 'localhost';  // Endereço do banco de dados
-    private static $dbname = 'sped fiscal';  // Nome do banco de dados
-    private static $username = 'root';  // Usuário do banco
-    private static $password = '';  // Senha do banco (vazio para local)
+// Linha 2: A ÚNICA CLASSE neste arquivo é DbBusca.
+class DbBusca { 
+    // É importante que as credenciais aqui apontem para o banco de dados SPED (se for diferente)
+    private static $host = 'localhost';
+    private static $dbname = 'sped fiscal'; // Nome do banco de busca
+    private static $username = 'root';
+    private static $password = '';
 
     private static $connection;
 
@@ -20,4 +22,3 @@ class Db {
         return self::$connection;
     }
 }
-?>
